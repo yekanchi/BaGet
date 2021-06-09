@@ -1,4 +1,5 @@
 import { initializeIcons } from '@uifabric/icons';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -19,7 +20,6 @@ ReactDOM.render(
   <Router>
     <App>
       <Route path="/packages/:id/:version?" component={DisplayPackage} />
-
       <Route path="/upload" component={Upload} />
     </App>
   </Router>,

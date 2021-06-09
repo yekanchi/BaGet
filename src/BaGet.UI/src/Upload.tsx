@@ -1,7 +1,7 @@
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import * as React from 'react';
 import CopyText from 'copy-text-to-clipboard';
-
+import FilePublishinfo from './FilePublishinfo'
 import './Upload.css';
 
 interface IUploadState {
@@ -15,7 +15,8 @@ enum Tab {
   DotNet,
   NuGet,
   Paket,
-  PowerShellGet
+  PowerShellGet,
+  FilePublish
 }
 
 class Upload extends React.Component<{}, IUploadState> {
@@ -44,11 +45,13 @@ class Upload extends React.Component<{}, IUploadState> {
         <div>You can push packages using the service index <code>{this.serviceIndexUrl}</code>.</div>
 
         <div className="upload-info">
+
           <ul className="nav">
             <UploadTab type={Tab.DotNet} selected={this.state.selected} onSelect={this.handleSelect} />
             <UploadTab type={Tab.NuGet} selected={this.state.selected} onSelect={this.handleSelect} />
             <UploadTab type={Tab.Paket} selected={this.state.selected} onSelect={this.handleSelect} />
             <UploadTab type={Tab.PowerShellGet} selected={this.state.selected} onSelect={this.handleSelect} />
+            <UploadTab type={Tab.FilePublish} selected={this.state.selected} onSelect={this.handleSelect} />
           </ul>
 
           <div className="content">
@@ -69,6 +72,7 @@ class Upload extends React.Component<{}, IUploadState> {
             For more information, please refer to <a target="_blank" rel="noopener noreferrer" href={this.state.documentationUrl}>{this.state.name}'s documentation</a>.
           </div>
         </div>
+        <FilePublishinfo />
       </div>
     );
   }
@@ -112,6 +116,11 @@ class Upload extends React.Component<{}, IUploadState> {
         ];
         documentationUrl = "https://docs.microsoft.com/en-us/powershell/module/powershellget/publish-module";
         break;
+      case Tab.FilePublish:
+        name = "کپی کردن فایل";
+        content = [`\\\\portalcore\\packages\\nuget`];
+        documentationUrl = "\\\\portalcore\\packages\\nuget";
+        break;
     }
 
     return {
@@ -142,6 +151,7 @@ class UploadTab extends React.Component<IUploadTabProps> {
       case Tab.NuGet: this.title = "NuGet CLI"; break;
       case Tab.Paket: this.title = "Paket CLI"; break;
       case Tab.PowerShellGet: this.title = "PowerShellGet"; break;
+      case Tab.FilePublish: this.title = "کپی کردن فایل"; break;
       default: this.title = "Unknown"; break;
     }
   }

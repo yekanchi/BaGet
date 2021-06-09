@@ -63,7 +63,9 @@ namespace BaGet
                 .ConfigureAppConfiguration((ctx, config) =>
                 {
                     var root = Environment.GetEnvironmentVariable("BAGET_CONFIG_ROOT");
-
+#if DEBUG
+                    root = string.Empty;
+#endif
                     if (!string.IsNullOrEmpty(root))
                     {
                         config.SetBasePath(root);

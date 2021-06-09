@@ -22,3 +22,6 @@ class LicenseInfo extends React.Component<ILicenseInfoProps> {
 }
 
 export default LicenseInfo;
+
+
+

@@ -1,3 +1,36 @@
+@font-face {
+  font-family: 'FabricMDL2Icons';
+  src: url('./public/fabric-icons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FabricMDL2Icons-0';
+  src: url('./public/fabric-icons-0.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FabricMDL2Icons-1';
+  src: url('./public/fabric-icons-1.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FabricMDL2Icons-2';
+  src: url('./public/fabric-icons-2.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FabricMDL2Icons-5';
+  src: url('./public/fabric-icons-5.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #navbar ul {
   margin-left: -15px;
 }

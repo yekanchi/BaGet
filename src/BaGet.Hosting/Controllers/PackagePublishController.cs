@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using BaGet.Core;
@@ -40,7 +41,7 @@ namespace BaGet.Hosting
             if (_options.Value.IsReadOnlyMode ||
                 !await _authentication.AuthenticateAsync(Request.GetApiKey(), cancellationToken))
             {
-                HttpContext.Response.StatusCode = 401;
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 return;
             }
 
