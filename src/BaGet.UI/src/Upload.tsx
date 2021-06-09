@@ -37,6 +37,19 @@ class Upload extends React.Component<{}, IUploadState> {
   }
 
   public render() {
+    let publishInfo;
+    if (this.state.selected == Tab.FilePublish) {
+      publishInfo = <FilePublishinfo />;
+    } else {
+      publishInfo =
+        <div>
+          For more information, please refer to
+        <a target="_blank" rel="noopener noreferrer" href={this.state.documentationUrl}>
+            {this.state.name}'s documentation
+          </a>.
+        </div>
+
+    }
     return (
       <div className="col-sm-12">
         <h1>Upload</h1>
@@ -69,10 +82,10 @@ class Upload extends React.Component<{}, IUploadState> {
             </div>
           </div>
           <div className="icon-text alert alert-warning">
-            For more information, please refer to <a target="_blank" rel="noopener noreferrer" href={this.state.documentationUrl}>{this.state.name}'s documentation</a>.
+            {publishInfo}
           </div>
         </div>
-        <FilePublishinfo />
+
       </div>
     );
   }
@@ -80,8 +93,8 @@ class Upload extends React.Component<{}, IUploadState> {
   private handleSelect = (selected: Tab) =>
     this.setState(this.buildState(selected));
 
-    private copyCommand = () =>
-      CopyText(this.state.content.join("\n"));
+  private copyCommand = () =>
+    CopyText(this.state.content.join("\n"));
 
   private buildState(tab: Tab): IUploadState {
     let name: string;
